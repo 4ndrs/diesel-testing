@@ -1,15 +1,26 @@
-use crate::schema::posts;
+use crate::schema::{manekinas, posts};
 
 use diesel::prelude::*;
 
 #[derive(Queryable, Selectable)]
-#[diesel(table_name = crate::schema::posts)]
+#[diesel(table_name = posts)]
 #[diesel(check_for_backend(diesel::sqlite::Sqlite))]
 pub struct Post {
     pub id: i32,
     pub title: String,
     pub body: String,
     pub published: bool,
+}
+
+#[derive(HasQuery, Debug)]
+#[diesel(table_name = manekinas)]
+#[diesel(check_for_backend(diesel::sqlite::Sqlite))]
+pub struct Manekina {
+    pub id: i32,
+    pub name: String,
+    pub hair_color: Option<String>,
+    pub created_at: String,
+    pub updated_at: String,
 }
 
 #[derive(Insertable)]
