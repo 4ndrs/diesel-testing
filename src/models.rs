@@ -1,4 +1,5 @@
 use crate::schema::{manekinas, posts};
+use chrono::NaiveDateTime;
 
 use diesel::prelude::*;
 
@@ -19,8 +20,8 @@ pub struct Manekina {
     pub id: i32,
     pub name: String,
     pub hair_color: Option<String>,
-    pub created_at: String,
-    pub updated_at: String,
+    pub created_at: NaiveDateTime,
+    pub updated_at: NaiveDateTime,
 }
 
 #[derive(Insertable)]
